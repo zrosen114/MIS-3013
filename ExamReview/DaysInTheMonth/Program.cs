@@ -106,9 +106,7 @@ namespace DaysInTheMonth
                 Console.WriteLine("Sorry that is not a valid input.");
             }
 
-
             Console.ReadKey();
-
         }
     }
 }
