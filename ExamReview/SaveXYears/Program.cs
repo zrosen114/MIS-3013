@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Zack Rosen
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,39 +11,28 @@ namespace SaveXYears
     {
         static void Main(string[] args)
         {
-            int weeks = 4;
-            int months = 12;
+            const int weeks = 4;
+            const int months = 12;
+            double pmt = 0;
+            double interest = 0;
+            int years = 0;
+            double FV = 0;
 
-            Console.WriteLine("How much money do you want to save per week?");
-            double principal = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("What is the interest rate per month?");
-            double monthrate = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("How many years do you want to save for?");
-            int useryears = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("How much money will you save per week?");
+            pmt = Convert.ToDouble(Console.ReadLine());
 
-            double principalpermonth = principal * weeks;
-            double principalperyear = principalpermonth * months;
-            double monthpercentrate = monthrate / 100;
-            double yearpercentrate = monthpercentrate * months;
+            Console.WriteLine("What is your interest rate per month? If your interest is 4% please input 4.");
+            interest = Convert.ToDouble(Console.ReadLine()) /100;
 
-            double saved = principalperyear * yearpercentrate * useryears;
+            Console.WriteLine("How many years would you like to save?");
+            years = Convert.ToInt32(Console.ReadLine());
 
-            Console.WriteLine("Year " + useryears + ": " + saved);
-
-
-            for (int year = 1; year <= useryears; year++)
+            for (int N = 1; N <= years * months; N++)
             {
-
+                FV += pmt * weeks;
+                FV += FV * interest;
+                Console.WriteLine("Month " + N.ToString("N0") + ": " + FV.ToString("C2"));
             }
-
-            
-
-
-
-
-
-
-
 
             Console.ReadKey();
         }
